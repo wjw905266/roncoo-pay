@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.roncoo.pay.common</groupId>
@@ -33,25 +35,18 @@
 	</modules>
 
 	<!-- 配置maven地址 -->
-	<distributionManagement>
-		<repository>
-			<id>nexus-releases</id>
-			<name>Nexus Release Repository</name>
-			<url>http://192.168.1.221:8081/nexus/content/repositories/releases/</url>
-		</repository>
-		<snapshotRepository>
-			<id>nexus-snapshots</id>
-			<name>Nexus Snapshot Repository</name>
-			<url>http://192.168.1.221:8081/nexus/content/repositories/snapshots/</url>
-		</snapshotRepository>
-	</distributionManagement>
+	<!-- <distributionManagement> <repository> <id>nexus-releases</id> <name>Nexus 
+		Release Repository</name> <url>http://192.168.1.221:8081/nexus/content/repositories/releases/</url> 
+		</repository> <snapshotRepository> <id>nexus-snapshots</id> <name>Nexus Snapshot 
+		Repository</name> <url>http://192.168.1.221:8081/nexus/content/repositories/snapshots/</url> 
+		</snapshotRepository> </distributionManagement> -->
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<!-- libs -->
 		<junit.version>4.11</junit.version>
-		<spring.version>3.2.4.RELEASE</spring.version>
+		<spring.version>5.1.5.RELEASE</spring.version>
 		<mybatis-spring.version>1.3.0</mybatis-spring.version>
 		<mybatis.version>3.4.0</mybatis.version>
 		<slf4j_version>1.7.21</slf4j_version>
@@ -71,7 +66,7 @@
 		<activeMQ.version>5.11.4</activeMQ.version>
 		<javassist.version>3.12.1.GA</javassist.version>
 		<transaction.version>1.1</transaction.version>
-		
+		<portlet.version>4.3.23.RELEASE</portlet.version>
 	</properties>
 
 	<dependencyManagement>
@@ -130,7 +125,7 @@
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-instrument-tomcat</artifactId>
-				<version>${spring.version}</version>
+				<version>${portlet.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
@@ -176,7 +171,7 @@
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-webmvc-portlet</artifactId>
-				<version>${spring.version}</version>
+				<version>${portlet.version}</version>
 			</dependency>
 
 			<!-- Spring libs end -->
@@ -224,7 +219,7 @@
 				<artifactId>log4j</artifactId>
 				<version>${log4j_version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>javassist</groupId>
 				<artifactId>javassist</artifactId>
@@ -339,10 +334,11 @@
 			</dependency>
 
 			<dependency>
-				<groupId>alipay</groupId>
-				<artifactId>alipay-sdk-java20151021120052</artifactId>
-				<version>1.0</version>
+				<groupId>com.alipay.sdk</groupId>
+				<artifactId>alipay-sdk-java</artifactId>
+				<version>3.7.4.ALL</version>
 			</dependency>
+
 
 			<dependency>
 				<groupId>jaxen</groupId>
@@ -407,8 +403,8 @@
 					<verbose>true</verbose>
 					<fork>true</fork>
 					<compilerArgument>-nowarn</compilerArgument>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.8</source>
+					<target>1.8</target>
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>

@@ -32,6 +32,8 @@
 		<commons-io.version>2.5</commons-io.version>
 		<shiro.version>1.2.4</shiro.version>
 		<jdom.version>2.0.2</jdom.version>
+		<portlet.version>4.3.23.RELEASE</portlet.version>
+		
 	</properties>
 
 	<dependencies>
@@ -82,7 +84,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-instrument-tomcat</artifactId>
-			<version>${spring.version}</version>
+			<version>${portlet.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -199,8 +201,8 @@
 					<verbose>true</verbose>
 					<fork>true</fork>
 					<compilerArgument>-nowarn</compilerArgument>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.8</source>
+					<target>1.8</target>
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>

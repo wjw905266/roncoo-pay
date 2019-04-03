@@ -6,7 +6,8 @@ import com.alipay.api.response.AlipayTradeQueryResponse;
 import com.alipay.demo.trade.config.Configs;
 import com.alipay.demo.trade.model.ExtendParams;
 import com.alipay.demo.trade.model.GoodsDetail;
-import com.alipay.demo.trade.model.builder.AlipayTradePayContentBuilder;
+import com.alipay.demo.trade.model.builder.AlipayTradePayRequestBuilder;
+import com.alipay.demo.trade.model.builder.AlipayTradeQueryRequestBuilder;
 import com.alipay.demo.trade.model.result.AlipayF2FPayResult;
 import com.alipay.demo.trade.model.result.AlipayF2FQueryResult;
 import com.alipay.demo.trade.service.AlipayMonitorService;
@@ -139,7 +140,8 @@ public class AliF2FPaySubmit {
         }
 
         // 创建请求builder，设置请求参数
-        AlipayTradePayContentBuilder builder = new AlipayTradePayContentBuilder()
+        
+        AlipayTradePayRequestBuilder builder = new AlipayTradePayRequestBuilder()
                 .setOutTradeNo(outTradeNo)
                 .setSubject(subject)
                 .setAuthCode(authCode)
@@ -149,7 +151,7 @@ public class AliF2FPaySubmit {
                 .setBody(body)
                 .setExtendParams(extendParams)
                 .setGoodsDetailList(goodsDetailList)
-                .setTimeExpress(timeExpress);
+                .setTimeoutExpress(timeExpress);
 
         // 调用tradePay方法获取当面付应答
         AlipayF2FPayResult result = tradeService.tradePay(builder);
@@ -186,8 +188,10 @@ public class AliF2FPaySubmit {
      * @param outTradeNo
      */
     public void f2fPayquery(String outTradeNo) {
-
-        AlipayF2FQueryResult result = tradeService.queryTradeResult(outTradeNo);
+    	// 创建查询请求builder，设置请求参数
+        AlipayTradeQueryRequestBuilder builder = new AlipayTradeQueryRequestBuilder()
+            .setOutTradeNo(outTradeNo);
+        AlipayF2FQueryResult result = tradeService.queryTradeResult(builder);
         switch (result.getTradeStatus()) {
             case SUCCESS:
                 LOG.info("查询返回该订单支付成功: )");
